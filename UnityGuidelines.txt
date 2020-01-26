@@ -1,0 +1,29 @@
+General Guidelines
+
+General GameObject (Prefab) Structure
+
+> Object - core script on it, rigidbody2d, animator, audio player, things that apply for the whole object
+  > Mesh/Sprite - The sprite, make sure its at (0.0, 0.0, 0.0), makes it easier to swap out later
+  > Collider1 - scripts relevant to this particular collider
+  > Collider2 - E.g. clickable script 
+
+This means: On the root game object, put CoreScript on it, RigidBody on it, Animator...
+On a CHILD GameObject called "Mesh", put the Mesh component.
+    Make sure the pivot and feet are at (0,0,0) so we can line up with the world floor
+On a CHILD GameObject, call it Collider, and put any scripts relevant to only that collider there.
+
+
+
+Core script on the root object
+"Attributes" on subobjects (with their own collider if necessary)
+E.g. if a part is "Destructable" on a certain part of an object, make a subobject with a collider in that part of the object with a script called "Destructable"
+
+For scripts on subobjects:
+  Start() { core = transform.parent.GetComponent<CoreScript> }
+  Collider2, attach a "MouseController" script, OnMouseClick { core.Death(); core.Hit(); //etc }
+  
+Always leave things enabled in the editor
+Disable GameObject with GameObject.SetActive(false) in Start() if it shouldn't be visible immediately
+  
+Awake() - initializing variable related to self
+Start() - any references to other objects

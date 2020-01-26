@@ -1,0 +1,5 @@
+
+You feel your body radiating with electrical energy!
+Press the interact button near gates to travel through them.
+Steer through the circuit with the arrow keys.
+You can also disable other electronics while in this form.
